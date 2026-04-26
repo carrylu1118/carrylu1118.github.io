@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Carry&#39;Blog</title>
   
+  <subtitle>文质彬彬，然后君子</subtitle>
+  <link href="https://carryblog.top/atom.xml" rel="self"/>
   
-  <link href="https://l-carry.github.io/atom.xml" rel="self"/>
-  
-  <link href="https://l-carry.github.io/"/>
+  <link href="https://carryblog.top/"/>
   <updated>2023-10-23T10:01:44.297Z</updated>
-  <id>https://l-carry.github.io/</id>
+  <id>https://carryblog.top/</id>
   
   <author>
     <name>L-Carry</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title></title>
-    <link href="https://l-carry.github.io/posts/0.html"/>
-    <id>https://l-carry.github.io/posts/0.html</id>
+    <link href="https://carryblog.top/posts/0.html"/>
+    <id>https://carryblog.top/posts/0.html</id>
     <published>2023-10-27T11:17:46.120Z</published>
     <updated>2023-10-23T10:01:44.297Z</updated>
     
@@ -40,8 +40,8 @@
   
   <entry>
     <title>文言文鉴赏——滕王阁序</title>
-    <link href="https://l-carry.github.io/posts/0.html"/>
-    <id>https://l-carry.github.io/posts/0.html</id>
+    <link href="https://carryblog.top/posts/0.html"/>
+    <id>https://carryblog.top/posts/0.html</id>
     <published>2023-10-27T11:17:46.117Z</published>
     <updated>2023-09-14T12:49:57.927Z</updated>
     
@@ -52,17 +52,17 @@
     
     
     
-    <category term="鉴赏" scheme="https://l-carry.github.io/categories/%E9%89%B4%E8%B5%8F/"/>
+    <category term="鉴赏" scheme="https://carryblog.top/categories/%E9%89%B4%E8%B5%8F/"/>
     
     
-    <category term="文言文鉴赏" scheme="https://l-carry.github.io/tags/%E6%96%87%E8%A8%80%E6%96%87%E9%89%B4%E8%B5%8F/"/>
+    <category term="文言文鉴赏" scheme="https://carryblog.top/tags/%E6%96%87%E8%A8%80%E6%96%87%E9%89%B4%E8%B5%8F/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第八章</title>
-    <link href="https://l-carry.github.io/posts/46119d0b.html"/>
-    <id>https://l-carry.github.io/posts/46119d0b.html</id>
+    <link href="https://carryblog.top/posts/46119d0b.html"/>
+    <id>https://carryblog.top/posts/46119d0b.html</id>
     <published>2023-10-23T09:49:17.000Z</published>
     <updated>2023-10-23T10:01:44.312Z</updated>
     
@@ -73,42 +73,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构第七章(下篇)</title>
-    <link href="https://l-carry.github.io/posts/28267775.html"/>
-    <id>https://l-carry.github.io/posts/28267775.html</id>
-    <published>2023-10-22T15:44:34.000Z</published>
-    <updated>2023-10-23T10:01:44.302Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="7-3-2-平衡二叉树">7.3.2 平衡二叉树</h4><ul><li><p>平衡二叉树的定义</p><ul><li>又称AVL树</li><li>一棵平衡二叉树或者是空树，或者是具有以下性质的二叉排序树：<ul><li><strong>左</strong>子树与<strong>右</strong>子树的<strong>高度之差的绝对值小于等于1</strong>；</li><li><strong>左</strong>子树和<strong>右</strong>子树也是平衡二叉排序树。</li></ul></li></ul></li><li><p>为了方便起见，给每个结点附加一个数字，给出<strong>该结点左子树与右子树的高度差</strong>。这个数字称为结点的<strong>平衡因子</strong></p><ul><li><p>根据平衡二叉树的定义，平衡二叉树上所有结点的平衡因子只能是-1，0，或1</p></li><li><p>对于一棵有n个结点的AVL树，其高度保持在$O(log_2n)$数量级，ASL也是保持在$O(log_2n)$量级</p></li><li><p>当我们在一个平衡二叉树上插入结点时，可能导致<strong>失衡</strong></p><ul><li><p>平衡调整的四种类型：</p><p><img src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231018144342.png" alt=""></p><p>LR型和RL型左右要看B和A哪个大</p><ul><li>调整原则：1. 降低高度 2. 保持二叉排序树性质</li></ul></li></ul></li></ul></li></ul><h3 id="7-4-哈希表的查找">7.4 哈希表的查找</h3><h4 id="7-4-1-散列表的基本概念">7.4.1 散列表的基本概念</h4><ul><li>基本思想：记录的存储位置与关键字之间存在对应关系</li></ul><p>​对应关系——hash函数（hash:散列）</p><p>​Loc(i)=H(keyi)</p><ul><li>散列表的查找<ul><li>根据散列函数H(key)=k<ul><li>查找key=9，直接访问H(9)=9号地址，若内容为9则成功<br>若查不到，则返回一个特殊值，如空指针或空记录。</li></ul></li><li>优点：查找效率高<br>缺点：空间效率低</li></ul></li><li>散列函数和散列地址：在记录的存储位置p和其关键字key 之间建立一个确定的对应关系H, 使 p=H(key ), 称这个对应关系H为散列函数，p为散列地址。</li><li>散列表：一个有线连续的地址空间，用以存储按散列函数计算得到相应散列地址的数据记录。通常散列表的存储空间是一个一维数组，散列地址是数组的下标</li><li>冲突：不同的关键码映射到同一个散列地址<ul><li>key1≠key2，但是H(key1)=H(key2)</li><li>冲突是不可避免的，但可以减少</li></ul></li><li>同义词：具有相同函数值的多个关键字</li></ul><h4 id="7-4-2-散列函数的构造方法">7.4.2 散列函数的构造方法</h4><ul><li><p>构造散列函数的考虑因素：</p><ul><li>散列表的长度</li><li>关键字的长度</li><li>关键字的分布情况</li><li>计算散列函数所需的时间</li><li>记录的查找频率</li></ul></li><li><p>构造号的散列函数要遵循以下两条原则</p><ul><li>函数计算要简单，每一个关键字只能有一个散列地址与之对应</li><li>函数的值域需在表长的范围内， 计算出的散列地址的分布应均匀，尽可能减少冲突。</li></ul></li><li><p>根据数据元素的集合特性构造</p><ul><li>要求一: n个数据原仅占用n个地址虽然散列查找是以空间换时间，但仍希望散列的地址空间尽量小</li><li>要求二:无论用什么方法存储，目的都是尽量均匀地存放元素，以避免冲突。</li></ul></li></ul><h5 id="7-4-2-1-直接定址法">7.4.2.1 直接定址法</h5><ul><li>Hash(key)=a.key+b</li><li>优点：以关键码key的某个线性函数值为散列地址，不会产生冲突<br>缺点：要占用连续的地址空间，空间效率低</li></ul><h5 id="7-4-2-2-除留余数法">7.4.2.2 除留余数法</h5><ul><li><p>Hash(key)=key mod p</p><ul><li><p>技巧：设：表长为m，取p&lt;=m且为质数</p><ul><li><p>例：{15,23,27,38,53,61,70}</p><p>散列函数：Hash(key)=key mod 7</p><table><thead><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead><tbody><tr><td>70</td><td>15</td><td>23</td><td>38</td><td>53</td><td>61</td><td>27</td></tr></tbody></table></li></ul></li></ul></li></ul><h4 id="7-4-3-处理冲突的方法">7.4.3 处理冲突的方法</h4><h5 id="7-4-3-1-开放地址法（开地址法）">7.4.3.1 开放地址法（开地址法）</h5><ul><li><p>基本思想：有冲突时就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将数据元素存入</p><ul><li>列入：除留余数法：$H_i=(Hash(key)+d)mod \ m$</li><li>常用方法：<ul><li>线性探测法      $d_i为1,2,……，m-1线性序列$</li><li>二次探测法      $d_i为1^2,-1^2,2^2,-2^2……，q^2二次序列$</li><li>伪随机探测法    $d_i为伪随机数序列$</li></ul></li></ul></li><li><p>例：关键码集为：{47，7，29，11，16，92，22，8，3}，散列表长m=11，散列函数为$Hash(key)=key \ mod \ 11$,拟用线性探测法处理冲突</p><table><thead><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead><tbody><tr><td>11</td><td>22</td><td></td><td>47</td><td>92</td><td>16</td><td>3</td><td>7</td><td>29</td><td>8</td><td></td></tr></tbody></table><ul><li>使用线性探测法解释：</li></ul><ol><li>47、7均是由散列函数得到的没有冲突的散列地址;</li><li>Hash(29)=7，散列地址有冲突，需寻找下一个空的散列地址由$H=(Hash(29)+1) mod \ 11=8$，散列地址8为空，因此将29存入。</li><li>11、16、92均是由散列函数得到的没有冲突的散列地址:</li><li>另外，22、8、3同样在散列地址上有冲突，也是由H,找到空的散列地址的。<ul><li>平均查找长度ASL=(1+2 +1 +1 +1 +4 +1 +2 +2)/9=1.67</li></ul></li></ol><table><thead><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead><tbody><tr><td>11</td><td>22</td><td>3</td><td>47</td><td>92</td><td>16</td><td></td><td>7</td><td>29</td><td>8</td><td></td></tr></tbody></table><ul><li>使用二次探测法解释：<ul><li>Hash(3)=3散列地址有冲突，由于$H_1=(Hash(3)+1^2)mod \ 11=4$，仍然冲突；</li><li>$H_2=(Hash(3)-1^2)mod \ 11=2$找到空的散列地址，存入</li></ul></li></ul></li></ul><h5 id="7-4-3-2-链地址法（拉链法）">7.4.3.2 链地址法（拉链法）</h5><ul><li><p>基本思想：相同散列地址的记录链成一单链表</p></li><li><p>m个散列地址就设m个单链表，然后用一个数组将m个单链表的表头指针存储起来，形成一个动态结构。</p></li><li><p>链地址法建立散列表的步骤</p><ul><li>step1：取数据元素的关键字key，计算其散列函数值 (地址)。若该地址对应的链表为空，则将该元素插入此链表；否则执行Step2解决冲突。</li><li>step2：根据选择的冲突处理方法，计算关键字key的下一个存储地址若该地址对应的链表为不为空，则利用链表的前插法或后插法将该元素插入此链表</li></ul></li><li><p>链地址法的优点：</p><ul><li>非同义词不会冲突，无“聚集”现象<ul><li>链表上的结点空间动态申请，更适合于表长不确定的情况</li></ul></li></ul></li></ul><h4 id="7-4-4-散列表的查找">7.4.4 散列表的查找</h4><ul><li>给定值查找值k，查找过程：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[给定k值]==&gt;B(计算H)</span><br><span class="line">B==&gt;C&#123;此地址为空&#125;</span><br><span class="line">C--&gt;|N|D&#123;关键字==k&#125;</span><br><span class="line">C--&gt;|Y|G[查找失败]</span><br><span class="line">D--&gt;|N|E[案处理冲突方法计算Hi]</span><br><span class="line">D--&gt;|Y|H[查找成功]</span><br><span class="line">E--&gt;C</span><br><span class="line">F[竖向流程图]</span><br></pre></td></tr></table></figure><ul><li><p>$ASL=(1<em>6+2+3</em>3+4+9)/12=2.5$</p></li><li><p>用连地址法处理冲突：</p><p><img src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231018180909.png" alt=""></p></li><li><p>$ASL=(1<em>6+2</em>4+3+4)/12=1.75$</p></li><li><p>使用平均查找长度ASL来衡量查找算法，ASL取决于</p><ul><li>散列函数</li><li>处理冲突的方法</li><li>散列表的装填因子α<ul><li>$\Large α=\dfrac {表中填入的记录数}{哈希表的长度}$</li><li>α越大，表中的记录数越多，表越满，发生冲突的可能性就越大，查找时比较次数就越多</li></ul></li><li>无冲突时才能达到O(1)</li><li>$\large ASL≈1+\dfrac {α}{2}$</li><li>$\large ASL≈\dfrac {1}{2}(1+\dfrac{1}{1-α})$</li><li>$\large ASL≈-\dfrac{1}{α}ln(1-α)$</li></ul></li><li><p>结论</p><ul><li>链地址法优于开地址法</li><li>散列表技术具有很好的平均性能，优于一些传统的技术</li><li>除留余数法作散列函数优于其它类型函数</li></ul></li></ul>]]></content>
-    
-    
-    <summary type="html">本文是数据结构与算法基础第七章(下篇)--王卓老师第十三周课程笔记</summary>
-    
-    
-    
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
-    
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第七章(汇总)</title>
-    <link href="https://l-carry.github.io/posts/a518c5d2.html"/>
-    <id>https://l-carry.github.io/posts/a518c5d2.html</id>
+    <link href="https://carryblog.top/posts/a518c5d2.html"/>
+    <id>https://carryblog.top/posts/a518c5d2.html</id>
     <published>2023-10-22T15:44:34.000Z</published>
     <updated>2023-10-23T10:01:44.305Z</updated>
     
@@ -119,19 +96,42 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构第七章(下篇)</title>
+    <link href="https://carryblog.top/posts/28267775.html"/>
+    <id>https://carryblog.top/posts/28267775.html</id>
+    <published>2023-10-22T15:44:34.000Z</published>
+    <updated>2023-10-23T10:01:44.302Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="7-3-2-平衡二叉树">7.3.2 平衡二叉树</h4><ul><li><p>平衡二叉树的定义</p><ul><li>又称AVL树</li><li>一棵平衡二叉树或者是空树，或者是具有以下性质的二叉排序树：<ul><li><strong>左</strong>子树与<strong>右</strong>子树的<strong>高度之差的绝对值小于等于1</strong>；</li><li><strong>左</strong>子树和<strong>右</strong>子树也是平衡二叉排序树。</li></ul></li></ul></li><li><p>为了方便起见，给每个结点附加一个数字，给出<strong>该结点左子树与右子树的高度差</strong>。这个数字称为结点的<strong>平衡因子</strong></p><ul><li><p>根据平衡二叉树的定义，平衡二叉树上所有结点的平衡因子只能是-1，0，或1</p></li><li><p>对于一棵有n个结点的AVL树，其高度保持在$O(log_2n)$数量级，ASL也是保持在$O(log_2n)$量级</p></li><li><p>当我们在一个平衡二叉树上插入结点时，可能导致<strong>失衡</strong></p><ul><li><p>平衡调整的四种类型：</p><p><img src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231018144342.png" alt=""></p><p>LR型和RL型左右要看B和A哪个大</p><ul><li>调整原则：1. 降低高度 2. 保持二叉排序树性质</li></ul></li></ul></li></ul></li></ul><h3 id="7-4-哈希表的查找">7.4 哈希表的查找</h3><h4 id="7-4-1-散列表的基本概念">7.4.1 散列表的基本概念</h4><ul><li>基本思想：记录的存储位置与关键字之间存在对应关系</li></ul><p>​对应关系——hash函数（hash:散列）</p><p>​Loc(i)=H(keyi)</p><ul><li>散列表的查找<ul><li>根据散列函数H(key)=k<ul><li>查找key=9，直接访问H(9)=9号地址，若内容为9则成功<br>若查不到，则返回一个特殊值，如空指针或空记录。</li></ul></li><li>优点：查找效率高<br>缺点：空间效率低</li></ul></li><li>散列函数和散列地址：在记录的存储位置p和其关键字key 之间建立一个确定的对应关系H, 使 p=H(key ), 称这个对应关系H为散列函数，p为散列地址。</li><li>散列表：一个有线连续的地址空间，用以存储按散列函数计算得到相应散列地址的数据记录。通常散列表的存储空间是一个一维数组，散列地址是数组的下标</li><li>冲突：不同的关键码映射到同一个散列地址<ul><li>key1≠key2，但是H(key1)=H(key2)</li><li>冲突是不可避免的，但可以减少</li></ul></li><li>同义词：具有相同函数值的多个关键字</li></ul><h4 id="7-4-2-散列函数的构造方法">7.4.2 散列函数的构造方法</h4><ul><li><p>构造散列函数的考虑因素：</p><ul><li>散列表的长度</li><li>关键字的长度</li><li>关键字的分布情况</li><li>计算散列函数所需的时间</li><li>记录的查找频率</li></ul></li><li><p>构造号的散列函数要遵循以下两条原则</p><ul><li>函数计算要简单，每一个关键字只能有一个散列地址与之对应</li><li>函数的值域需在表长的范围内， 计算出的散列地址的分布应均匀，尽可能减少冲突。</li></ul></li><li><p>根据数据元素的集合特性构造</p><ul><li>要求一: n个数据原仅占用n个地址虽然散列查找是以空间换时间，但仍希望散列的地址空间尽量小</li><li>要求二:无论用什么方法存储，目的都是尽量均匀地存放元素，以避免冲突。</li></ul></li></ul><h5 id="7-4-2-1-直接定址法">7.4.2.1 直接定址法</h5><ul><li>Hash(key)=a.key+b</li><li>优点：以关键码key的某个线性函数值为散列地址，不会产生冲突<br>缺点：要占用连续的地址空间，空间效率低</li></ul><h5 id="7-4-2-2-除留余数法">7.4.2.2 除留余数法</h5><ul><li><p>Hash(key)=key mod p</p><ul><li><p>技巧：设：表长为m，取p&lt;=m且为质数</p><ul><li><p>例：{15,23,27,38,53,61,70}</p><p>散列函数：Hash(key)=key mod 7</p><table><thead><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead><tbody><tr><td>70</td><td>15</td><td>23</td><td>38</td><td>53</td><td>61</td><td>27</td></tr></tbody></table></li></ul></li></ul></li></ul><h4 id="7-4-3-处理冲突的方法">7.4.3 处理冲突的方法</h4><h5 id="7-4-3-1-开放地址法（开地址法）">7.4.3.1 开放地址法（开地址法）</h5><ul><li><p>基本思想：有冲突时就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将数据元素存入</p><ul><li>列入：除留余数法：$H_i=(Hash(key)+d)mod \ m$</li><li>常用方法：<ul><li>线性探测法      $d_i为1,2,……，m-1线性序列$</li><li>二次探测法      $d_i为1^2,-1^2,2^2,-2^2……，q^2二次序列$</li><li>伪随机探测法    $d_i为伪随机数序列$</li></ul></li></ul></li><li><p>例：关键码集为：{47，7，29，11，16，92，22，8，3}，散列表长m=11，散列函数为$Hash(key)=key \ mod \ 11$,拟用线性探测法处理冲突</p><table><thead><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead><tbody><tr><td>11</td><td>22</td><td></td><td>47</td><td>92</td><td>16</td><td>3</td><td>7</td><td>29</td><td>8</td><td></td></tr></tbody></table><ul><li>使用线性探测法解释：</li></ul><ol><li>47、7均是由散列函数得到的没有冲突的散列地址;</li><li>Hash(29)=7，散列地址有冲突，需寻找下一个空的散列地址由$H=(Hash(29)+1) mod \ 11=8$，散列地址8为空，因此将29存入。</li><li>11、16、92均是由散列函数得到的没有冲突的散列地址:</li><li>另外，22、8、3同样在散列地址上有冲突，也是由H,找到空的散列地址的。<ul><li>平均查找长度ASL=(1+2 +1 +1 +1 +4 +1 +2 +2)/9=1.67</li></ul></li></ol><table><thead><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead><tbody><tr><td>11</td><td>22</td><td>3</td><td>47</td><td>92</td><td>16</td><td></td><td>7</td><td>29</td><td>8</td><td></td></tr></tbody></table><ul><li>使用二次探测法解释：<ul><li>Hash(3)=3散列地址有冲突，由于$H_1=(Hash(3)+1^2)mod \ 11=4$，仍然冲突；</li><li>$H_2=(Hash(3)-1^2)mod \ 11=2$找到空的散列地址，存入</li></ul></li></ul></li></ul><h5 id="7-4-3-2-链地址法（拉链法）">7.4.3.2 链地址法（拉链法）</h5><ul><li><p>基本思想：相同散列地址的记录链成一单链表</p></li><li><p>m个散列地址就设m个单链表，然后用一个数组将m个单链表的表头指针存储起来，形成一个动态结构。</p></li><li><p>链地址法建立散列表的步骤</p><ul><li>step1：取数据元素的关键字key，计算其散列函数值 (地址)。若该地址对应的链表为空，则将该元素插入此链表；否则执行Step2解决冲突。</li><li>step2：根据选择的冲突处理方法，计算关键字key的下一个存储地址若该地址对应的链表为不为空，则利用链表的前插法或后插法将该元素插入此链表</li></ul></li><li><p>链地址法的优点：</p><ul><li>非同义词不会冲突，无“聚集”现象<ul><li>链表上的结点空间动态申请，更适合于表长不确定的情况</li></ul></li></ul></li></ul><h4 id="7-4-4-散列表的查找">7.4.4 散列表的查找</h4><ul><li>给定值查找值k，查找过程：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[给定k值]==&gt;B(计算H)</span><br><span class="line">B==&gt;C&#123;此地址为空&#125;</span><br><span class="line">C--&gt;|N|D&#123;关键字==k&#125;</span><br><span class="line">C--&gt;|Y|G[查找失败]</span><br><span class="line">D--&gt;|N|E[案处理冲突方法计算Hi]</span><br><span class="line">D--&gt;|Y|H[查找成功]</span><br><span class="line">E--&gt;C</span><br><span class="line">F[竖向流程图]</span><br></pre></td></tr></table></figure><ul><li><p>$ASL=(1<em>6+2+3</em>3+4+9)/12=2.5$</p></li><li><p>用连地址法处理冲突：</p><p><img src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231018180909.png" alt=""></p></li><li><p>$ASL=(1<em>6+2</em>4+3+4)/12=1.75$</p></li><li><p>使用平均查找长度ASL来衡量查找算法，ASL取决于</p><ul><li>散列函数</li><li>处理冲突的方法</li><li>散列表的装填因子α<ul><li>$\Large α=\dfrac {表中填入的记录数}{哈希表的长度}$</li><li>α越大，表中的记录数越多，表越满，发生冲突的可能性就越大，查找时比较次数就越多</li></ul></li><li>无冲突时才能达到O(1)</li><li>$\large ASL≈1+\dfrac {α}{2}$</li><li>$\large ASL≈\dfrac {1}{2}(1+\dfrac{1}{1-α})$</li><li>$\large ASL≈-\dfrac{1}{α}ln(1-α)$</li></ul></li><li><p>结论</p><ul><li>链地址法优于开地址法</li><li>散列表技术具有很好的平均性能，优于一些传统的技术</li><li>除留余数法作散列函数优于其它类型函数</li></ul></li></ul>]]></content>
+    
+    
+    <summary type="html">本文是数据结构与算法基础第七章(下篇)--王卓老师第十三周课程笔记</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构(汇总)</title>
-    <link href="https://l-carry.github.io/posts/603d4955.html"/>
-    <id>https://l-carry.github.io/posts/603d4955.html</id>
+    <link href="https://carryblog.top/posts/603d4955.html"/>
+    <id>https://carryblog.top/posts/603d4955.html</id>
     <published>2023-10-22T09:49:17.000Z</published>
     <updated>2023-10-25T05:36:42.637Z</updated>
     
@@ -142,19 +142,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第七章(上篇)</title>
-    <link href="https://l-carry.github.io/posts/15465ec5.html"/>
-    <id>https://l-carry.github.io/posts/15465ec5.html</id>
+    <link href="https://carryblog.top/posts/15465ec5.html"/>
+    <id>https://carryblog.top/posts/15465ec5.html</id>
     <published>2023-10-20T12:46:12.000Z</published>
     <updated>2023-10-23T10:01:44.307Z</updated>
     
@@ -165,19 +165,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title></title>
-    <link href="https://l-carry.github.io/posts/0.html"/>
-    <id>https://l-carry.github.io/posts/0.html</id>
+    <link href="https://carryblog.top/posts/0.html"/>
+    <id>https://carryblog.top/posts/0.html</id>
     <published>2023-10-18T13:12:16.000Z</published>
     <updated>2023-10-23T10:01:44.317Z</updated>
     
@@ -188,19 +188,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第六章(下篇)</title>
-    <link href="https://l-carry.github.io/posts/47c13b4.html"/>
-    <id>https://l-carry.github.io/posts/47c13b4.html</id>
+    <link href="https://carryblog.top/posts/47c13b4.html"/>
+    <id>https://carryblog.top/posts/47c13b4.html</id>
     <published>2023-10-18T12:12:16.000Z</published>
     <updated>2023-10-23T10:01:44.315Z</updated>
     
@@ -211,19 +211,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第六章(上篇)</title>
-    <link href="https://l-carry.github.io/posts/391c3a04.html"/>
-    <id>https://l-carry.github.io/posts/391c3a04.html</id>
+    <link href="https://carryblog.top/posts/391c3a04.html"/>
+    <id>https://carryblog.top/posts/391c3a04.html</id>
     <published>2023-10-16T11:22:24.000Z</published>
     <updated>2023-10-23T10:01:44.314Z</updated>
     
@@ -234,19 +234,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第五章(汇总)</title>
-    <link href="https://l-carry.github.io/posts/bdc474ea.html"/>
-    <id>https://l-carry.github.io/posts/bdc474ea.html</id>
+    <link href="https://carryblog.top/posts/bdc474ea.html"/>
+    <id>https://carryblog.top/posts/bdc474ea.html</id>
     <published>2023-10-12T12:33:51.000Z</published>
     <updated>2023-10-12T12:38:21.282Z</updated>
     
@@ -257,19 +257,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第五章(下)</title>
-    <link href="https://l-carry.github.io/posts/15c51329.html"/>
-    <id>https://l-carry.github.io/posts/15c51329.html</id>
+    <link href="https://carryblog.top/posts/15c51329.html"/>
+    <id>https://carryblog.top/posts/15c51329.html</id>
     <published>2023-10-11T13:31:15.000Z</published>
     <updated>2023-10-12T12:40:13.986Z</updated>
     
@@ -280,19 +280,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>文言文鉴赏——水调歌头</title>
-    <link href="https://l-carry.github.io/posts/6de92aaf.html"/>
-    <id>https://l-carry.github.io/posts/6de92aaf.html</id>
+    <link href="https://carryblog.top/posts/6de92aaf.html"/>
+    <id>https://carryblog.top/posts/6de92aaf.html</id>
     <published>2023-10-11T07:26:04.000Z</published>
     <updated>2023-10-11T07:36:27.052Z</updated>
     
@@ -303,17 +303,17 @@
     
     
     
-    <category term="鉴赏" scheme="https://l-carry.github.io/categories/%E9%89%B4%E8%B5%8F/"/>
+    <category term="鉴赏" scheme="https://carryblog.top/categories/%E9%89%B4%E8%B5%8F/"/>
     
     
-    <category term="文言文鉴赏" scheme="https://l-carry.github.io/tags/%E6%96%87%E8%A8%80%E6%96%87%E9%89%B4%E8%B5%8F/"/>
+    <category term="文言文鉴赏" scheme="https://carryblog.top/tags/%E6%96%87%E8%A8%80%E6%96%87%E9%89%B4%E8%B5%8F/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第五章(中)</title>
-    <link href="https://l-carry.github.io/posts/d61b900d.html"/>
-    <id>https://l-carry.github.io/posts/d61b900d.html</id>
+    <link href="https://carryblog.top/posts/d61b900d.html"/>
+    <id>https://carryblog.top/posts/d61b900d.html</id>
     <published>2023-10-10T15:23:53.000Z</published>
     <updated>2023-10-12T12:40:21.254Z</updated>
     
@@ -324,19 +324,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第五章(上)</title>
-    <link href="https://l-carry.github.io/posts/cde2268.html"/>
-    <id>https://l-carry.github.io/posts/cde2268.html</id>
+    <link href="https://carryblog.top/posts/cde2268.html"/>
+    <id>https://carryblog.top/posts/cde2268.html</id>
     <published>2023-10-08T13:40:33.000Z</published>
     <updated>2023-10-12T12:40:15.832Z</updated>
     
@@ -347,19 +347,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>文言文鉴赏——采桑子·恨君不似江楼月</title>
-    <link href="https://l-carry.github.io/posts/b4844049.html"/>
-    <id>https://l-carry.github.io/posts/b4844049.html</id>
+    <link href="https://carryblog.top/posts/b4844049.html"/>
+    <id>https://carryblog.top/posts/b4844049.html</id>
     <published>2023-10-08T10:34:37.000Z</published>
     <updated>2023-10-11T07:36:31.394Z</updated>
     
@@ -370,17 +370,17 @@
     
     
     
-    <category term="鉴赏" scheme="https://l-carry.github.io/categories/%E9%89%B4%E8%B5%8F/"/>
+    <category term="鉴赏" scheme="https://carryblog.top/categories/%E9%89%B4%E8%B5%8F/"/>
     
     
-    <category term="文言文鉴赏" scheme="https://l-carry.github.io/tags/%E6%96%87%E8%A8%80%E6%96%87%E9%89%B4%E8%B5%8F/"/>
+    <category term="文言文鉴赏" scheme="https://carryblog.top/tags/%E6%96%87%E8%A8%80%E6%96%87%E9%89%B4%E8%B5%8F/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第四章</title>
-    <link href="https://l-carry.github.io/posts/69ea4c49.html"/>
-    <id>https://l-carry.github.io/posts/69ea4c49.html</id>
+    <link href="https://carryblog.top/posts/69ea4c49.html"/>
+    <id>https://carryblog.top/posts/69ea4c49.html</id>
     <published>2023-10-06T13:40:33.000Z</published>
     <updated>2023-10-12T12:40:38.649Z</updated>
     
@@ -391,19 +391,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第三章</title>
-    <link href="https://l-carry.github.io/posts/dec7552c.html"/>
-    <id>https://l-carry.github.io/posts/dec7552c.html</id>
+    <link href="https://carryblog.top/posts/dec7552c.html"/>
+    <id>https://carryblog.top/posts/dec7552c.html</id>
     <published>2023-10-04T13:46:00.000Z</published>
     <updated>2023-10-12T12:40:39.221Z</updated>
     
@@ -414,19 +414,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第二章(汇总)</title>
-    <link href="https://l-carry.github.io/posts/b7d0efe8.html"/>
-    <id>https://l-carry.github.io/posts/b7d0efe8.html</id>
+    <link href="https://carryblog.top/posts/b7d0efe8.html"/>
+    <id>https://carryblog.top/posts/b7d0efe8.html</id>
     <published>2023-09-13T11:51:00.000Z</published>
     <updated>2023-10-12T12:40:57.918Z</updated>
     
@@ -437,19 +437,19 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>数据结构第二章(下篇)</title>
-    <link href="https://l-carry.github.io/posts/3aee5d4f.html"/>
-    <id>https://l-carry.github.io/posts/3aee5d4f.html</id>
+    <link href="https://carryblog.top/posts/3aee5d4f.html"/>
+    <id>https://carryblog.top/posts/3aee5d4f.html</id>
     <published>2023-09-12T09:30:00.000Z</published>
     <updated>2023-10-12T12:40:47.685Z</updated>
     
@@ -460,12 +460,12 @@
     
     
     
-    <category term="笔记" scheme="https://l-carry.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="数据结构与算法基础" scheme="https://l-carry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
+    <category term="数据结构与算法基础" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="C语言" scheme="https://l-carry.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
+    <category term="C语言" scheme="https://carryblog.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   

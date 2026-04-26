@@ -3093,10 +3093,10 @@ if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
   document.getElementById("defineBg").innerText = `:root{
-    --default-bg: url(https://s2.loli.net/2023/10/02/rxZhGVI9LtWAFgS.jpg);
-    --darkmode-bg: url(https://s2.loli.net/2023/10/02/PrHuZSlMoiEF6qW.jpg);
-    --mobileday-bg: url(https://s2.loli.net/2023/10/02/rxZhGVI9LtWAFgS.jpg);
-    --mobilenight-bg: url(https://s2.loli.net/2023/10/02/PrHuZSlMoiEF6qW.jpg);
+    --default-bg: url(https://images2.imgbox.com/14/d2/2X7Bl0H5_o.jpg);
+    --darkmode-bg: url(https://images2.imgbox.com/ed/3c/MnHhUGly_o.jpg);
+    --mobileday-bg: url(https://images2.imgbox.com/14/d2/2X7Bl0H5_o.jpg);
+    --mobilenight-bg: url(https://images2.imgbox.com/ed/3c/MnHhUGly_o.jpg);
   }`;
 }
 // 切换背景主函数
