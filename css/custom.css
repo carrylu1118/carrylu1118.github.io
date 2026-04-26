@@ -10,3 +10,16 @@
     /* 定义显示样式 */
     font-display: block;
   }
+  /* 强制修正代码块折叠按钮居中 */
+#article-container .highlight-tools .expand {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  top: 0 !important;
+  height: 100% !important;
+}
+#article-container .highlight-tools .expand i {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
