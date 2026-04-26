@@ -326,15 +326,6 @@
   </url>
   
   <url>
-    <loc>https://carryblog.top/social/fcircle/index.html</loc>
-    
-    <lastmod>2023-03-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://carryblog.top/site/census/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
@@ -344,9 +335,9 @@
   </url>
   
   <url>
-    <loc>https://carryblog.top/posts/2013454d.html</loc>
+    <loc>https://carryblog.top/social/fcircle/index.html</loc>
     
-    <lastmod>2022-10-23</lastmod>
+    <lastmod>2023-03-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -385,13 +376,6 @@
   </url>
   
   <url>
-    <loc>https://carryblog.top/tags/%E5%A4%96%E6%8C%82%E6%A0%87%E7%AD%BE/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -416,13 +400,6 @@
   
   <url>
     <loc>https://carryblog.top/categories/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://carryblog.top/categories/%E6%BC%94%E7%A4%BA/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
