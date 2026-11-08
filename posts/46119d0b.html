@@ -1,0 +1,939 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><script>if ('serviceWorker' in navigator) {
+  var isLocalDev = ['localhost', '127.0.0.1', '0.0.0.0'].indexOf(location.hostname) !== -1
+  if (isLocalDev) {
+    navigator.serviceWorker.getRegistrations().then(function (rs) {
+      rs.forEach(function (r) { r.unregister() })
+    })
+  } else {
+    navigator.serviceWorker.register('/sw.js').then(function () {
+      if (localStorage.getItem('install') !== 'true') {
+        localStorage.setItem('install', 'true')
+        location.reload()
+      }
+    })
+  }
+}
+</script><head><div id="myscoll"></div><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>数据结构第八章 | Carry's Blog</title><meta name="keywords" content="C语言,数据结构与算法基础"><meta name="author" content="carrylu"><meta name="copyright" content="carrylu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="本文是数据结构与算法基础第八章--王卓老师第十四周课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构第八章">
+<meta property="og:url" content="https://carryblog.top/posts/46119d0b.html">
+<meta property="og:site_name" content="Carry&#39;s Blog">
+<meta property="og:description" content="本文是数据结构与算法基础第八章--王卓老师第十四周课程笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picsum.photos/id/1041/1200/675">
+<meta property="article:published_time" content="2023-10-23T09:49:17.000Z">
+<meta property="article:modified_time" content="2023-10-23T10:01:44.312Z">
+<meta property="article:author" content="carrylu">
+<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="数据结构与算法基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picsum.photos/id/1041/1200/675"><link rel="shortcut icon" href="/"><link rel="canonical" href="https://carryblog.top/posts/46119d0b"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//events.vercount.one"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://registry.npmmirror.com/@fortawesome/fontawesome-free/6.0.0/files/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://registry.npmmirror.com/@fancyapps/ui/4.0.31/files/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"YOUR_ALGOLIA_APP_ID","apiKey":"YOUR_ALGOLIA_SEARCH_KEY","indexName":"your_index_name","hits":{"per_page":5},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据结构第八章',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-23 18:01:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="preconnect" href="https://registry.npmmirror.com"><link rel="preconnect" href="https://registry.npmmirror.com" crossorigin><link rel="preconnect" href="https://npm.elemecdn.com"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preload" as="font" type="font/woff2" href="https://cdn.jsdelivr.net/npm/@fontsource/lxgw-wenkai-tc@5/files/lxgw-wenkai-tc-chinese-traditional-400-normal.woff2" crossorigin><link rel="preconnect" href="https://sdk.51.la"><link rel="preconnect" href="https://sdk.51.la" crossorigin><link rel="dns-prefetch" href="https://at.alicdn.com"><link rel="dns-prefetch" href="https://lib.baomitu.com"><link rel="stylesheet" href="/css/stats.css?v=20261005"><link rel="stylesheet" href="/css/twikoo.css?v=20261018-owo"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="bgFilterParam"></style><span id="fps" aria-hidden="true"></span><style id="defineBg">:root{--default-bg:url(https://picsum.photos/id/1015/1920/1080);--darkmode-bg:url(https://picsum.photos/id/1044/1920/1080);--mobileday-bg:url(https://picsum.photos/id/1018/1920/1080);--mobilenight-bg:url(https://picsum.photos/id/1039/1920/1080);}</style><style id="menu_shadow"></style><style id="nav-display"></style><style id="aside-show"></style><style id="aside-pos"></style><link rel="stylesheet" href="/css/site-inject.css?v=20261015-fps4"><link rel="stylesheet" href="/css/navigation.css?v=20261011-nav3"><link rel="stylesheet" href="/css/mobile-drawer.css?v=20261008"><link rel="stylesheet" href="/css/avatar-glow.css?v=20261004q"><link rel="stylesheet" href="/css/timeline-archive.css?v=20261011d"><script defer src="/js/timeline-archive.js?v=20261011b"></script><link rel="stylesheet" href="/css/about-page.css?v=20261006"><script src="/js/inject/ping-route-boot.js"></script><script src="/js/inject/ping-route.js"></script><script src="/js/inject/beauty-boot.js?v=20261015-solid3"></script><script src="/js/inject/right-menu-state-boot.js"></script><script>window.fomalNightConfig=window.fomalNightConfig||{enabled:true,latLng:null,themeKey:'theme'}</script><script src="/js/inject/daynight-boot.js?v=20261014-nightboot2"></script><script src="/js/inject/typewriter.js?v=20261004b"></script><link rel="stylesheet" href="/css/typewriter.css?v=20261004"><link rel="stylesheet" href="/css/paperclip.css?v=20261005-mobile1"><link rel="stylesheet" href="/css/archive-page.css?v=20261018-scrollfix"><script defer src="/js/inject/archive-page.js?v=20261018-scrollfix"></script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="/css/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Carry's Blog" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.ibb.co/1JjQrHLF/IMG-5050.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-home"></use></svg><span class="menu_word" style="font-size:17px"> 首页</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon--article"></use></svg><span class="menu_word" style="font-size:17px"> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-guidang1">                   </use></svg><span class="menu_word" style="font-size:17px"> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-shujutongji1">                   </use></svg><span class="menu_word" style="font-size:17px"> 文章统计</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:randomPost();"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-zuji1">                   </use></svg><span class="menu_word" style="font-size:17px"> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-xiangzi"></use></svg><span class="menu_word" style="font-size:17px"> 八宝箱</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/life/music/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-yinle">                   </use></svg><span class="menu_word" style="font-size:17px"> 八音盒</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/gallery/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-tubiaozhizuomoban">                   </use></svg><span class="menu_word" style="font-size:17px"> 画廊</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/astronomy/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-wangyuanjing">                   </use></svg><span class="menu_word" style="font-size:17px"> 天文馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/nav/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-zhifengche">                   </use></svg><span class="menu_word" style="font-size:17px"> 网址导航</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-shejiaoxinxi"></use></svg><span class="menu_word" style="font-size:17px"> 社交</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/social/fcircle/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-pengyouquan">                   </use></svg><span class="menu_word" style="font-size:17px"> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-liuyan">                   </use></svg><span class="menu_word" style="font-size:17px"> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/social/link/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-lianjie">                   </use></svg><span class="menu_word" style="font-size:17px"> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-wangye"></use></svg><span class="menu_word" style="font-size:17px"> 网站</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/site/census/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon--tongjibiao">                   </use></svg><span class="menu_word" style="font-size:17px"> 网站统计</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/site/time/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-xianxingshalou">                   </use></svg><span class="menu_word" style="font-size:17px"> 旧时光</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/personal/about/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-paperplane">                   </use></svg><span class="menu_word" style="font-size:17px"> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Carry's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-home"></use></svg><span class="menu_word" style="font-size:17px"> 首页</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon--article"></use></svg><span class="menu_word" style="font-size:17px"> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-guidang1">                   </use></svg><span class="menu_word" style="font-size:17px"> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-shujutongji1">                   </use></svg><span class="menu_word" style="font-size:17px"> 文章统计</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:randomPost();"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-zuji1">                   </use></svg><span class="menu_word" style="font-size:17px"> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-xiangzi"></use></svg><span class="menu_word" style="font-size:17px"> 八宝箱</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/life/music/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-yinle">                   </use></svg><span class="menu_word" style="font-size:17px"> 八音盒</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/gallery/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-tubiaozhizuomoban">                   </use></svg><span class="menu_word" style="font-size:17px"> 画廊</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/astronomy/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-wangyuanjing">                   </use></svg><span class="menu_word" style="font-size:17px"> 天文馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/nav/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-zhifengche">                   </use></svg><span class="menu_word" style="font-size:17px"> 网址导航</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-shejiaoxinxi"></use></svg><span class="menu_word" style="font-size:17px"> 社交</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/social/fcircle/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-pengyouquan">                   </use></svg><span class="menu_word" style="font-size:17px"> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-liuyan">                   </use></svg><span class="menu_word" style="font-size:17px"> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/social/link/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-lianjie">                   </use></svg><span class="menu_word" style="font-size:17px"> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-wangye"></use></svg><span class="menu_word" style="font-size:17px"> 网站</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/site/census/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon--tongjibiao">                   </use></svg><span class="menu_word" style="font-size:17px"> 网站统计</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/site/time/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-xianxingshalou">                   </use></svg><span class="menu_word" style="font-size:17px"> 旧时光</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/personal/about/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-paperplane">                   </use></svg><span class="menu_word" style="font-size:17px"> 关于</span></a></li></ul></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()">PAGE_NAME</a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:24px;width:24px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> 搜索</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:26px;width:26px;fill:currentColor;position:relative;top:8px" aria-hidden="true"><use xlink:href="#icon-huahua"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:25px;width:25px;fill:currentColor;position:relative;top:7px" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon">       </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">数据结构第八章</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><svg class="meta_icon post-meta-icon" style="width:30px;height:30px;position:relative;top:10px"><use xlink:href="#icon-rili"></use></svg><span class="post-meta-label">发表于 </span><time class="post-meta-date-created" datetime="2023-10-23T09:49:17.000Z" title="发表于 2023-10-23 17:49:17">2023-10-23</time><span class="post-meta-separator">|</span><svg class="meta_icon post-meta-icon" style="width:18px;height:18px;position:relative;top:5px"><use xlink:href="#icon-gengxin1"></use></svg><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-23T10:01:44.312Z" title="更新于 2023-10-23 18:01:44">2023-10-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><svg class="meta_icon post-meta-icon" style="width:18px;height:18px;position:relative;top:5px"><use xlink:href="#icon-biaoqian"></use></svg><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><svg class="meta_icon post-meta-icon" style="width:25px;height:25px;position:relative;top:8px"><use xlink:href="#icon-charuword"></use></svg><span class="post-meta-label">字数总计:</span><span class="word-count">3541</span><span class="post-meta-separator">|</span><svg class="meta_icon post-meta-icon" style="width:20px;height:20px;position:relative;top:5px"><use xlink:href="#icon-shizhong"></use></svg><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据结构第八章"><svg class="meta_icon post-meta-icon" style="width:25px;height:25px;position:relative;top:5px"><use xlink:href="#icon-eye"></use></svg><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv">—</span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="8-排序">8 排序</h2>
+<h3 id="8-1-基本概念和排序方法概述">8.1 基本概念和排序方法概述</h3>
+<h4 id="8-1-1-排序的基本概念">8.1.1 排序的基本概念</h4>
+<ul>
+<li>
+<p>排序：将一组杂乱无章的数据按照一定规律顺次排列起来，即，将无需数列排成一个有序序列（由小到大或由大到小）的运算。</p>
+<ul>
+<li>如果参加排序的数据结点包含多个数据域，那么排序往往是针对其中某个域而言</li>
+<li>排序方法的分类：
+<ul>
+<li>按<strong>数据存储介质</strong>：内部排序和外部排序
+<ul>
+<li>内部排序：数据量不大，数据在外存，无需内外存交换数据</li>
+<li>外部排序：数据量较大，数据在外存（文件排序）
+<ul>
+<li>外部排序时，要将数据分批调入内存来排序，中间结果还要及时放入外存，显然外部排序要复杂得多</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>按<strong>比价器个数</strong>：串行排序和并行排序
+<ul>
+<li>串行排序：单处理机（同一时刻比较一对元素）</li>
+<li>并行排序：多处理机（同一时刻比较多对元素）</li>
+</ul>
+</li>
+<li>按<strong>主要操作</strong>：比较排序和基数排序
+<ul>
+<li>比较排序：用比较的方法
+<ul>
+<li>插入排序、交换排序、选择排序、归并排序</li>
+</ul>
+</li>
+<li>基数排序：不比较元素的大小，仅仅根据元素本身的取值确定其有序位置</li>
+</ul>
+</li>
+<li>按<strong>辅助空间</strong>：原地排序和非原地排序
+<ul>
+<li>原地排序：辅助空间用量为O(1)的排序方法（所占用的辅助存储空间与参与排序的数据量大小无关）</li>
+<li>非原地排序：辅助空间用量超过O(1)的排序方法</li>
+</ul>
+</li>
+<li>按<strong>稳定性</strong>：稳定排序和非稳定排序
+<ul>
+<li>稳定排序：能够使任何数值相等的元素，排序以后相对次序不变。</li>
+<li>非稳定排序：不是稳定排序的方法</li>
+</ul>
+</li>
+<li>按<strong>自然性</strong>：自然排序和非自然排序
+<ul>
+<li>自然排序：输入数据越有序，排序的速度越快的排序方法</li>
+<li>非自然排序：不是自然排序的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>接下来的学习内容：</p>
+</li>
+<li>
+<p>按排序依据原则：</p>
+<ul>
+<li>插入排序：直接插入排序、折半插入排序、希尔排序</li>
+<li>交换排序：冒泡排序、快速排序</li>
+<li>选择排序：简单选择排序、堆排序</li>
+<li>归并排序:：2-路归并排序</li>
+<li>基数排序</li>
+</ul>
+</li>
+<li>
+<p>按排序所需工作量</p>
+<ul>
+<li>简单的排序方法：$ T(n)=O(n^2)$</li>
+<li>基数排序：$ T(n)=O(d.n)$</li>
+<li>先进的排序方法：$ T(n)=O(nlogn)$</li>
+</ul>
+</li>
+<li>
+<p>存储结构——记录序列以顺序表存储</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 20			<span class="comment">//设记录不超过20个</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> KeyType;		<span class="comment">//设关键字为int型</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Typedef <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    KeyType key;					<span class="comment">//关键字</span></span><br><span class="line">    infoType otherinfo;				<span class="comment">//其他数据项</span></span><br><span class="line">&#125;RedType;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Typedef <span class="class"><span class="keyword">struct</span>&#123;</span>					<span class="comment">//定义顺序表的结构</span></span><br><span class="line">    RedType r[MAXSIZE +<span class="number">1</span>];		<span class="comment">//存储顺序表的向量</span></span><br><span class="line">    							<span class="comment">//r[0]一般作哨兵或缓冲区</span></span><br><span class="line">    <span class="type">int</span> length;					</span><br><span class="line">&#125;SqList;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="8-2-插入排序">8.2 插入排序</h3>
+<ul>
+<li>基本思想：
+<ul>
+<li>在有序序列中插入一个元素，保持序列有序，有序长度不断增加</li>
+</ul>
+</li>
+<li>插入排序的种类
+<ul>
+<li>顺序法定位插入位置——直接插入排序</li>
+<li>二分法定位插入位置——二分插入排序</li>
+<li>缩小增量多遍插入排序——希尔排序</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-2-1-直接插入排序">8.2.1 直接插入排序</h4>
+<ul>
+<li>
+<p>直接插入排序——采用顺序查找法查找插入位置</p>
+<ol>
+<li>
+<p>复制插入元素</p>
+</li>
+<li>
+<p>记录后移，查找插入位置</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(j=i<span class="number">-1</span>;j&gt;=<span class="number">0</span>&amp;&amp;x&lt;a[j]；j--)</span><br><span class="line">    a[j+<span class="number">1</span>]=a[j];</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>插入到正确位置</p>
+</li>
+</ol>
+</li>
+<li>
+<p>直接插入排序，使用“哨兵”</p>
+<ol>
+<li>复制为哨兵   L.r[0]=L.r[i];</li>
+<li>记录后移，查找插入位置</li>
+<li>插入到正确位置</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">InserSort</span><span class="params">(SqList &amp;L)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=L.length;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(L.r[i].key&lt;L.r[i<span class="number">-1</span>].key)&#123;</span><br><span class="line">            L.r[<span class="number">0</span>]=L.r[i];</span><br><span class="line">            <span class="keyword">for</span>(j=i<span class="number">-1</span>;L.r[<span class="number">0</span>].key&lt;L.r[j].key;--j)&#123;</span><br><span class="line">                L.r[j+<span class="number">1</span>]=L.r[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        L.r[j+<span class="number">1</span>]=L.r[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>平均的情况：
+<ul>
+<li>比较次数$\sum\limits^{n-1}_{i=1} \dfrac{i+1}{2}=\dfrac{1}{4}(n+2)(n-1) $</li>
+<li>移动次数$\sum\limits^{n-1}_{i=1} （\dfrac{i+1}{2}+1）=\dfrac{1}{4}(n+6)(n-1) $</li>
+</ul>
+</li>
+<li>时间复杂度结论
+<ul>
+<li>原始数据越接近有序，排序速度越快</li>
+<li>最坏情况下（输入数据是逆有序的） $Tw(n)=O(n^2)$</li>
+<li>平均情况下，耗时差不多是最坏情况的一半 $Te(n)=O(n^2)$</li>
+<li>要提高查找速度
+<ul>
+<li>减少元素的比较次数</li>
+<li>减少元素的移动次数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-2-2-折半插入排序">8.2.2 折半插入排序</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BinsertSort</span><span class="params">(SqList &amp;L)</span>｛   						<span class="comment">//对顺序表L做折半插入排序</span></span><br><span class="line"><span class="title function_">for</span> <span class="params">(i=<span class="number">2</span>;i&lt;=L.length;++i)</span>&#123;</span><br><span class="line">    L.r[O]=L.r[i];</span><br><span class="line">	low=l;high=i<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">        m=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(L.r[O].key&lt;L.r[mid].key) high=mid<span class="number">-1</span>;		<span class="comment">//插入点在前一子表</span></span><br><span class="line">		<span class="keyword">else</span> low=mid+<span class="number">1</span>;								<span class="comment">//插入点在后一子表</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (j=i一l;j&gt;=high+l; --j) L.r[j+l]=L.r(j]; 	<span class="comment">//记录后移</span></span><br><span class="line">	L.r[high+l]=L.r[O]; 							<span class="comment">//将r[O]即原r[i], 插入到正确位置</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>算法特点：
+<ul>
+<li>稳定排序</li>
+<li>应为要进行折半查找，所以只能用于顺序结构，不能用于链式结构</li>
+<li>适合初始记录无序，n较大时的情况</li>
+</ul>
+</li>
+<li>算法分析：
+<ul>
+<li>时间复杂度为$O(n^2)$</li>
+<li>空间复杂度为$O(1)$</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-2-3-希尔排序">8.2.3 希尔排序</h4>
+<ul>
+<li>
+<p>基本思想：</p>
+<ul>
+<li>先将整个待排记录序列分割成<strong>若干子序列</strong>，分别进行<strong>直接插入排序</strong>待整个序列中的记录“<strong>基本有序</strong>”时，再对全体记录进行一次直接插入排序。</li>
+</ul>
+</li>
+<li>
+<p>算法特点：</p>
+<ul>
+<li>一次移动，移动位置较大，跳跃式地接近排序后的最终位置</li>
+<li>最后一次只需要少量移动</li>
+<li>增量序列必须是递减的，最后一个必须是1</li>
+<li>增量序列应该是互质的</li>
+</ul>
+</li>
+<li>
+<p>算法举例：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231019164250.png" alt=""></p>
+</li>
+<li>
+<p>算法代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">shellsort</span><span class="params">(Sqlist &amp;L,<span class="type">int</span> dlta[],<span class="type">int</span> t)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(k=<span class="number">0</span>;k&lt;t;++k)</span><br><span class="line">        shellinsert(L,dlta[k]);<span class="comment">//一趟增量为dlta[k]的插入排序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> shellinert（SqList &amp;L，<span class="type">int</span> dk)</span><br><span class="line">    <span class="keyword">for</span>(i=dk+<span class="number">1</span>;i&lt;=L.length;++i)</span><br><span class="line">        <span class="keyword">if</span>(r[i].key&lt;r[i-dk].key)&#123;</span><br><span class="line">            r[<span class="number">0</span>]=r[i];</span><br><span class="line">            <span class="keyword">for</span>(j=i-dk;j&gt;<span class="number">0</span> &amp;&amp;（r[<span class="number">0</span>].key&lt;r[j].key);j=j-dk)</span><br><span class="line">                r[j+dk]=r[j];</span><br><span class="line">            r[j+dk]=r[<span class="number">0</span>]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>算法分析：</p>
+<ul>
+<li>时间复杂度是n和d的函数：
+<ul>
+<li>$O(N^{1.25})到O(1.6n^{1.25})——经验公式 $</li>
+<li>时间复杂度为$O(1)$</li>
+<li>是一种<strong>不稳定</strong>的排序方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-3-交换排序">8.3 交换排序</h3>
+<h4 id="8-3-1-冒泡排序">8.3.1 冒泡排序</h4>
+<ul>
+<li>基本思想：每趟不断将记录两两比较，并按“前小后大”规则交换</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(SqList &amp;L)</span>&#123;</span><br><span class="line">    <span class="type">int</span> m,j,i; RedType x;</span><br><span class="line">    <span class="keyword">for</span>(m=<span class="number">1</span>;m&lt;=n<span class="number">-1</span>;m++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>j=n-m;j++)</span><br><span class="line">            <span class="keyword">if</span>(L.r[j].key&gt;L.r[j+<span class="number">1</span>].key)&#123;</span><br><span class="line">                x=L.r[j];</span><br><span class="line">                L.r[j]=L.r[j+<span class="number">1</span>];</span><br><span class="line">                r[j+<span class="number">1</span>]=x</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>改进的冒泡排序算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(SqList &amp;L)</span>&#123;</span><br><span class="line">    <span class="type">int</span> m,j,i,flag=<span class="number">1</span>; RedType x; </span><br><span class="line">    <span class="keyword">for</span>(m=<span class="number">1</span>;m&lt;=n<span class="number">-1</span>&amp;&amp;flag==<span class="number">1</span>;m++)&#123;		<span class="comment">//用flag作为是否有交换的标记</span></span><br><span class="line">        flag=<span class="number">0</span>；</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>j=n-m;j++)</span><br><span class="line">            <span class="keyword">if</span>(L.r[j].key&gt;L.r[j+<span class="number">1</span>].key)&#123;</span><br><span class="line">           		flag=<span class="number">1</span> 					<span class="comment">//若发生交换，flag置为1</span></span><br><span class="line">                x=L.r[j];</span><br><span class="line">                L.r[j]=L.r[j+<span class="number">1</span>];</span><br><span class="line">                r[j+<span class="number">1</span>]=x</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>冒泡排序算法评价</p>
+<ul>
+<li>冒泡排序最好时间复杂度是$O(n)$</li>
+<li>冒泡排序最坏时间复杂度为$(n^2)$</li>
+<li>冒泡排序平均时间复杂度为$O(n^2)$</li>
+<li>冒泡排序算法中增加一个辅助空间temp，辅助空间为$S(n)=O(1)$</li>
+<li>冒泡排序是<strong>稳定的</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="8-3-2-快速排序">8.3.2 快速排序</h4>
+<ul>
+<li>
+<p>基本思想</p>
+<ul>
+<li>任取一个元素<strong>为中心</strong></li>
+<li>所有比他<strong>小的元素一律前放</strong>，比他<strong>大的后放</strong>，形成<strong>左右两个子表</strong></li>
+<li>对各子表重新选择中心元素并<strong>依此规则调整</strong></li>
+<li>知道每个子表的元素<strong>只剩一个</strong></li>
+</ul>
+</li>
+<li>
+<p>快速排序演示</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231020151722.png" alt=""></p>
+</li>
+<li>
+<p>算法图解：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231020152334.png" alt=""></p>
+</li>
+<li>
+<p>排序算法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">partition</span><span class="params">(SqList &amp;L,<span class="type">int</span> low,<span class="type">int</span> high)</span>&#123;</span><br><span class="line">    L.r[<span class="number">0</span>]=L.r[low];									<span class="comment">//用子表的第一个记录做枢轴记录</span></span><br><span class="line">    pivotkey=L.r[low].key;								<span class="comment">//枢轴记录关键字保存在pivotkey中</span></span><br><span class="line">    <span class="keyword">while</span>(low&lt;high)&#123;									<span class="comment">//从表的两端交替地向中间扫描</span></span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp;L.[high].key&gt;=pivotkey)--high;</span><br><span class="line">        L.r[low]=L.r[high];								<span class="comment">//将比枢轴记录小的移动到低端</span></span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp;L.[low].key&gt;=pivotkey)++low;</span><br><span class="line">        L.r[high]=L.r[low];								<span class="comment">//将比枢轴记录大的移动到高端</span></span><br><span class="line">    &#125;</span><br><span class="line">    L.r[low]=L.r[<span class="number">0</span>];									<span class="comment">//枢轴记录到位</span></span><br><span class="line">    <span class="keyword">return</span> low;											<span class="comment">//返回枢轴记录</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">QSort</span><span class="params">(SqList &amp;L,<span class="type">int</span> low,<span class="type">int</span> high)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">        pivotloc=Partition(L,low,high);					<span class="comment">//将L.r[low,high]一分为二。pivotloc是枢轴记录</span></span><br><span class="line">        QSort(L,low,pivotloc<span class="number">-1</span>);						<span class="comment">//对左子表递归排序</span></span><br><span class="line">        QSort(L,pivotloc+<span class="number">1</span>,high);						<span class="comment">//对右子表递归排序</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">QuickSort</span><span class="params">(SqList &amp;L)</span>&#123;</span><br><span class="line">    QSort(L,<span class="number">1</span>,L.length);								<span class="comment">//对顺序表L做快速排序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>快速排序算法分析：</p>
+<ul>
+<li>
+<p>时间复杂度</p>
+<ul>
+<li>平均计算时间是$O(nlog_2n)$</li>
+<li>实验表明快速排序是我们所讨论的所有内排序方法中最好的一个。</li>
+</ul>
+</li>
+<li>
+<p>空间复杂度</p>
+<ul>
+<li>快速排序不是原地排序</li>
+<li>平均情况下：需要$O(logn)$的栈空间</li>
+<li>最坏情况下：栈空间可达$O(n)$</li>
+</ul>
+</li>
+<li>
+<p>快速排序不适于队原本有序或基本有序的记录序列进行排序</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-4-选择排序">8.4 选择排序</h3>
+<h4 id="8-4-1-简单选择排序">8.4.1 简单选择排序</h4>
+<ul>
+<li>
+<p>基本思想：</p>
+<ul>
+<li>在待排序的数据中选出最大(小)的元素放在其最终的位置。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231020171702.png" alt=""></p>
+</li>
+<li>
+<p>算法代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">SelectSort</span><span class="params">(SqList &amp;K)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;L.length;++i)&#123;</span><br><span class="line">        k=i;</span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;=L.length;j++)</span><br><span class="line">            <span class="keyword">if</span>(L.r[j].key&lt;L.r[k].key)k=j;		<span class="comment">//记录最小值位置</span></span><br><span class="line">        <span class="keyword">if</span>(k!=i)&#123;</span><br><span class="line">            x=L.r[i];</span><br><span class="line">            L.r[i]=L.r[k];</span><br><span class="line">            L.r[k]=x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>算法分析</p>
+<ul>
+<li>时间复杂度：$O(n^2)$</li>
+<li>空间复杂度：$O(1)$</li>
+</ul>
+</li>
+<li>
+<p>简单选择排序是<strong>不稳定</strong>排序</p>
+</li>
+</ul>
+<h4 id="8-2-2-堆排序">8.2.2 堆排序</h4>
+<ul>
+<li>
+<p>若有n个元素${a_1,a_2,……,a_n}$满足<br>
+$$<br>
+\left{<br>
+\begin{array}{l}<br>
+a_i&lt;=a_{2i}\<br>
+a_i&lt;=a_{2i+1}\<br>
+\end{array}<br>
+\right.<br>
+\quad\text{或者}\quad<br>
+\begin{cases}<br>
+a_i&gt;=a_{2i}\<br>
+a_i&gt;=a_{2i+1}\<br>
+\end{cases}<br>
+$$</p>
+<ul>
+<li>
+<p>则分别称该序列为小根堆和大根堆。</p>
+</li>
+<li>
+<p>从堆 定义可以看出，堆实质是满足如下性质的完全二叉树：二叉树中任一非叶子结点均小于(大于)它的孩子结点</p>
+</li>
+</ul>
+</li>
+<li>
+<p>若在输出<strong>堆顶</strong>的最小值 (最大值) 后，使得剩余n-1个元素的序列重又建成一个堆，则得到n个元素的次小值 (次大值) …如此反复，便能得到一个有序序列，这个过程称之为<strong>堆排序</strong>。</p>
+</li>
+<li>
+<p>堆的调整</p>
+<ul>
+<li>小根堆
+<ol>
+<li>输出堆顶元素之后，以堆中<strong>最后一个元素替代之</strong></li>
+<li>.然后将根结点值与左、右子树的根结点值进行比较，并与其中<strong>小者进行交换</strong>，</li>
+<li>重复上述操作，直至叶子结点，将得到新的堆，称这个从堆顶至叶子的调整过程为“<strong>筛选</strong>“</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>算法描述</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">HeapAdjust</span><span class="params">(elem R[],<span class="type">int</span> s, <span class="type">int</span> m)</span>&#123;</span><br><span class="line">    rc=R[s];</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">2</span>*S;J&lt;=M;J*=<span class="number">2</span>)&#123;<span class="comment">//沿key较大的孩子结点向下筛选</span></span><br><span class="line">        <span class="keyword">if</span>(j&lt;m&amp;&amp;R[j]&lt;R[j+<span class="number">1</span>])++j;<span class="comment">//j为key较大的记录的下标</span></span><br><span class="line">        <span class="keyword">if</span>(rc&gt;=R[j])<span class="keyword">break</span>;</span><br><span class="line">        R[s]=R[j];</span><br><span class="line">        s=j;<span class="comment">//rc应插入在位置s上</span></span><br><span class="line">    &#125;</span><br><span class="line">    R[s]=rc;<span class="comment">//插入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>堆的建立</p>
+<ul>
+<li>
+<p>单结点的二又树是堆;</p>
+</li>
+<li>
+<p>在完全二叉树中所有以叶子结点 (序号i &gt; n/2) 为根的子树是堆这样，我们只需依次将以序号为$n/2，n/2-1，…,1$的结点为根的子树均调整为堆即可。</p>
+<p>从最后一个非叶子结点开始，以此向前调整</p>
+<ol>
+<li>调整从第$n/2$个元素开始，将以该元素为根的二叉树调整为堆</li>
+<li>将以序号为$n/2 - 1$的结点为根的二叉树调整为堆</li>
+<li>再将以序号为$n/2 - 2$的结点为根的二又树调整为堆</li>
+<li>再将以序号为$n/2 - 3$的结点为根的二又树调整为堆</li>
+</ol>
+</li>
+<li>
+<p>通过以上分析可知：</p>
+<ul>
+<li>若对一个无序序列建堆，然后输出根；重复该过程就可以由一个无序序列输出有序序列。</li>
+<li>实质上，堆排序就是利用完全二叉树中父结点与孩子结点之间的内在关系来排序的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>堆排序算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> HeapSort（elem R[])&#123;			<span class="comment">//对R[1]到R[n]进行堆排序</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=n/<span class="number">2</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">        HeapAdjust(R,i,n);			<span class="comment">//建立初始堆</span></span><br><span class="line">    <span class="keyword">for</span>(i=n;i&gt;<span class="number">1</span>;i--)&#123;				<span class="comment">//进行n-1趟排序</span></span><br><span class="line">        Swap(R[<span class="number">1</span>],R[i]);			<span class="comment">//根与最后一个元素交换</span></span><br><span class="line">        HeapAdjust(R,<span class="number">1</span>,i<span class="number">-1</span>);		<span class="comment">//对R[1]到R[i-1]重新建堆</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>算法分析</p>
+<ul>
+<li>初始化堆所需时间不超过O(n)</li>
+<li>堆排序在最坏情况下，其时间复杂度也为$O(nlog_2 n)$，这是堆排序的最大优点。无论待排序列中的记录是正序还是逆序排列，都不会使堆排序处于&quot;最好”或&quot;最坏“的状态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-5-归并排序">8.5 归并排序</h3>
+<ul>
+<li>
+<p>基本思想：</p>
+<ul>
+<li>将两个或两个以上的有序子序列“<strong>归并</strong>”为一个有序序列</li>
+<li>在内部排序中，通常采用的是<strong>2-路归并排序</strong>。</li>
+</ul>
+</li>
+<li>
+<p>排序示例：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231021151235.png" alt=""></p>
+<ul>
+<li>整个归并排序仅需[$log_2 n $]趟</li>
+</ul>
+</li>
+<li>
+<p>算法分析：</p>
+<ul>
+<li>时间效率：$O(nlog_2n)$</li>
+<li>空间效率：$O(n)$、
+<ul>
+<li>因为需要一个与原始序列同样大小的辅助序列。这正是此算法的缺点</li>
+</ul>
+</li>
+<li>具有<strong>稳定</strong>性</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-6-基数排序">8.6 基数排序</h3>
+<ul>
+<li>
+<p>基本思想：</p>
+<ul>
+<li>分配+收集</li>
+<li>也叫<strong>桶排序或箱排序</strong>: 设置若干个箱子，将关键字为k的记录放入第k个箱子，然后在按序号将非空的连接。</li>
+</ul>
+</li>
+<li>
+<p>算法示例：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231021152926.png" alt=""></p>
+<ul>
+<li>将这组数据第一趟按照个位排，然后收集回来</li>
+<li>接下来按照十位来排，接下来收集回来</li>
+<li>最后按照百位来排，收集回来时，我们可以发现已经有序了</li>
+</ul>
+</li>
+<li>
+<p>算法分析</p>
+<ul>
+<li>时间效率：O(k*(n+m))
+<ul>
+<li>k：关键字个数</li>
+<li>m：关键字取值范围位m个值</li>
+</ul>
+</li>
+</ul>
+<p>总结：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="E:%5C%E5%A4%87%E8%80%83%E6%96%87%E4%BB%B6%5C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5C%E7%AC%94%E8%AE%B0%E5%9B%BE%E7%89%87%5CQQ%E6%88%AA%E5%9B%BE20231021153750.png" alt=""></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>数据结构第八章</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="/posts/46119d0b.html">/posts/46119d0b.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>carrylu</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2023-10-23</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-10-23</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C%E8%AF%AD%E8%A8%80/"><div class="tags-punctuation"><svg class="faa-tada icon" style="height:1.1em;width:1.1em;fill:currentColor;position:relative;top:2px;margin-right:3px" aria-hidden="true"><use xlink:href="#icon-sekuaibiaoqian"></use></svg></div>C语言</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"><div class="tags-punctuation"><svg class="faa-tada icon" style="height:1.1em;width:1.1em;fill:currentColor;position:relative;top:2px;margin-right:3px" aria-hidden="true"><use xlink:href="#icon-sekuaibiaoqian"></use></svg></div>数据结构与算法基础</a></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/df79b88b.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picsum.photos/id/1036/1200/675" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C语言笔记</div></div></a></div><div class="next-post pull-right"><a href="/posts/28267775.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picsum.photos/id/1043/1200/675" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据结构第七章(下篇)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/11edfcfa.html" title="数据结构习题（二）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picsum.photos/id/1016/1200/675" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-08-10</div><div class="title">数据结构习题（二）</div></div></a></div><div><a href="/posts/603d4955.html" title="数据结构(汇总)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picsum.photos/id/1018/1200/675" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2026-11-07</div><div class="title">数据结构(汇总)</div></div></a></div><div><a href="/posts/31ea9e82.html" title="数据结构第一章"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picsum.photos/id/1043/1200/675" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2026-11-07</div><div class="title">数据结构第一章</div></div></a></div><div><a href="/posts/28267775.html" title="数据结构第七章(下篇)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picsum.photos/id/1043/1200/675" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-23</div><div class="title">数据结构第七章(下篇)</div></div></a></div><div><a href="/posts/dec7552c.html" title="数据结构第三章"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picsum.photos/id/1041/1200/675" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-12</div><div class="title">数据结构第三章</div></div></a></div><div><a href="/posts/15465ec5.html" title="数据结构第七章(上篇)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picsum.photos/id/1036/1200/675" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-10-23</div><div class="title">数据结构第七章(上篇)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><svg class="meta_icon" style="width:22px;height:22px;position:relative;top:5px"><use xlink:href="#icon-mulu1"></use></svg><span style="font-weight:bold">目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%8E%92%E5%BA%8F"><span class="toc-text">8 排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="toc-text">8.1 基本概念和排序方法概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-1-%E6%8E%92%E5%BA%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">8.1.1 排序的基本概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">8.2 插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-1-%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">8.2.1 直接插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-2-%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">8.2.2 折半插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-3-%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-text">8.2.3 希尔排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="toc-text">8.3 交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">8.3.1 冒泡排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">8.3.2 快速排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">8.4 选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-1-%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">8.4.1 简单选择排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-2-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">8.2.2 堆排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">8.5 归并排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-6-%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="toc-text">8.6 基数排序</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-color: transparent;"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>离我们最近的星星有4.25光年远，我们许的愿望至少都要花上9年才能成真。————所以，向宇宙下订单要有耐心。✨</div><div class="btn-xz-box"><a class="btn-xz" href="/box/astronomy/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/archives/">开源指南</a><a href="/box/nav/">网址导航</a></li><li><a href="/social/link/">我的朋友</a><a href="/comments/">留点什么</a></li><li><a href="/personal/about/">关于作者</a><a href="/archives/">文章归档</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li><li><a href="/box/gallery/">我的画廊</a><a href="/site/time/">建设进程</a></li><li><a href="/site/census/">网站统计</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="https://carryblog.top/" title="Carry's Blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.ibb.co/1JjQrHLF/IMG-5050.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://cyborg2077.github.io/" title="Kyle's Blog"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2022/04/18/fj4XvrdM5o62hbA.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://liaoxuefeng.com/index.html" title="廖雪峰"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://liaoxuefeng.com/static/logo.svg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://www.ad-s.cn" title="冰峰博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.ad-s.cn/upload/bingfeng-square-dark.svg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://2heng.xin/" title="樱花庄的白猫"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.mashiro.top/view/2018/03/27/avatar.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://fe32.top/" title="Ethan.Tzy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/02/626f92e193879.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://blog.eurkon.com" title="Eurkon"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.eurkon.com/images/user/avatar.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://blog.crazywong.com/" title="CrazyWong"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://blog.crazywong.com/img/avatar.png" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2022-2026</b></span><span><b>&nbsp;&nbsp;By carrylu</b></span></div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v6.3.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/yourname/hexo-theme-fomalhaut" style="margin-inline:5px" title="主题Fomalhaut v1.0.5(基于Butterfly v4.3.1)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/badge/Theme-Fomalhaut-6513df.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用多线部署，主线路托管于Vercel"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vercel-brightgreen.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://user.51.la/" style="margin-inline:5px" title="本站数据分析得益于51la技术支持"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Analytics-51la-3db1eb.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://npmmirror.com/" style="margin-inline:5px" title="本站使用npmmirror为部分静态资源加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/badge/CDN-npmmirror.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本网站源码由Github提供存储仓库"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-GitHub-d021d6.svg" alt=""/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog right_side"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button class="share" type="button" title="分享链接" onclick="share()"><i class="fas fa-share-nodes"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0<span>%</span></span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/personal/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js?v=20261005-scroll1"></script><script src="/js/main.js?v=20261005-scroll1"></script><script src="https://registry.npmmirror.com/@fancyapps/ui/4.0.31/files/dist/fancybox.umd.js"></script><script src="https://registry.npmmirror.com/instant.page/5.1.0/files/instantpage.js" type="module"></script><script src="https://registry.npmmirror.com/vanilla-lazyload/17.3.1/files/dist/lazyload.iife.min.js"></script><script>window.__SEARCH_LAZY__ = ["https://registry.npmmirror.com/algoliasearch/4.14.3/files/dist/algoliasearch-lite.umd.js","https://registry.npmmirror.com/instantsearch.js/4.49.2/files/dist/instantsearch.production.min.js","/js/search/algolia.js"]</script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);
+document.getElementById('loading-box').addEventListener('click',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://registry.npmmirror.com/mathjax/3.2.2/files/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://carrysblog.netlify.app/.netlify/functions/twikoo',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://carrysblog.netlify.app/.netlify/functions/twikoo',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://registry.npmmirror.com/twikoo/2.0.12/files/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script defer charset="UTF-8" id="LA_COLLECT" src="https://sdk.51.la/js-sdk-pro.min.js"></script><script defer src="https://sdk.51.la/perf/js-sdk-perf.min.js" crossorigin="anonymous"></script><script defer src="/js/51la.js"></script><script src="https://registry.npmmirror.com/jquery/3.6.0/files/dist/jquery.min.js"></script><script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script><script async src="https://registry.npmmirror.com/clipboard/2.0.10/files/dist/clipboard.min.js"></script><script async src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer src="/js/winbox.bundle.min.js"></script><script async src="//at.alicdn.com/t/c/font_3586335_hsivh70x0fm.js"></script><script async src="//at.alicdn.com/t/c/font_3636804_glcijzcpx7f.js"></script><script async src="//at.alicdn.com/t/c/font_3612150_gkavascgf3n.js"></script><script async src="//at.alicdn.com/t/c/font_5239918_ta23cg9gek.js"></script><canvas id="universe"></canvas><canvas id="snow"></canvas><script defer src="/js/notify.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/data/voyager1.js"></script><script defer src="/js/data/holidays.js"></script><script defer src="/js/modules/console-art.js"></script><script defer src="/js/modules/shell.js?v=20261011-stage3"></script><script defer src="/js/modules/snow.js?v=20261010-snow1"></script><script defer src="/js/modules/effects.js?v=20261010-snow1"></script><script defer src="/js/modules/reading.js?v=20261015-fps2"></script><script defer src="/js/modules/nav.js?v=20261005-scroll1"></script><script defer src="/js/modules/cursor.js?v=20261015-fps2"></script><script defer src="/js/modules/footer-time.js?v=20261006"></script><script defer src="/js/modules/appearance-fonts.js?v=20261010-preview1"></script><script defer src="/js/modules/appearance-backgrounds.js?v=20261011-bgflash1"></script><script defer src="/js/modules/fireflies.js?v=20261010-fireflies1"></script><script defer src="/js/modules/ripple.js?v=20261014-ripple1"></script><script defer src="/js/modules/settings.js?v=20261015-custom1"></script><script defer src="/js/fomal.js"></script><script defer src="/js/wechat-qr.js"></script><script defer src="/js/festival.js"></script><script defer src="/js/author-status.js"></script><script defer src="/js/stats.js?v=20261005"></script><script defer src="/js/footer-music.js?v=20261005"></script><script defer src="/js/pjax-guard.js?v=20261005"></script><script defer src="/js/inject/search-lazy.js?v=20261011b"></script><script src="/js/inject/scroll-gap-fix.js?v=20261011"></script><script src="/js/inject/webinfo-card.js"></script><script src="/js/inject/ft-ad-extra.js"></script><script src="/js/inject/pc-local-link.js"></script><script defer src="/js/inject/about-route-probe.js?v=20261006"></script><link rel="stylesheet" href="https://registry.npmmirror.com/aplayer/1.10.1/files/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://registry.npmmirror.com/aplayer/1.10.1/files/dist/APlayer.min.js"></script><script src="https://npm.elemecdn.com/js-heo@1.0.12/metingjs/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show","#web_bg",".js-pjax","body > title","#app","#tag-echarts","#posts-echart","#categories-echarts"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  ;['tocScrollFn', 'scrollCollect'].forEach(name => {
+    const handler = window[name]
+    if (!handler) return
+    window.removeEventListener('scroll', handler)
+    if (typeof handler.cancel === 'function') handler.cancel()
+    window[name] = null
+  })
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//events.vercount.one/js"></script></div><!-- hexo injector body_end start --><script id="swiper-lazyload-fix">
+(function () {
+  if (window.__swiperLazyFix) return;
+  window.__swiperLazyFix = true;
+
+  function sync () {
+    try {
+      var inst = window.lazyLoadInstance;
+      if (inst && typeof inst.update === 'function') inst.update();
+    } catch (e) {}
+  }
+
+  function burst () {
+    [0, 120, 300, 700, 1500, 2600].forEach(function (d) { setTimeout(sync, d); });
+  }
+
+  // 1) 首次加载 + 站内 pjax 返回后：等异步的 data-pjax 脚本（swiper_init.js）跑完再补登记
+  document.addEventListener('pjax:complete', burst);
+  window.addEventListener('load', burst);
+  if (document.readyState !== 'loading') burst();
+  else document.addEventListener('DOMContentLoaded', burst);
+
+  // 2) Swiper 重建循环克隆时会增删 .blog-slider__wrp 的子节点（pjax 换页后容器会被替换，故持续重挂）
+  setTimeout(function watchWrp () {
+    var wrp = document.querySelector('.blog-slider__wrp');
+    if (wrp && wrp !== window.__swiperLazyWrp) {
+      try { if (window.__swiperLazyMo) window.__swiperLazyMo.disconnect(); } catch (e) {}
+      window.__swiperLazyWrp = wrp;
+      try {
+        window.__swiperLazyMo = new MutationObserver(function () {
+          clearTimeout(window.__swiperLazyTimer);
+          window.__swiperLazyTimer = setTimeout(sync, 100);
+        });
+        window.__swiperLazyMo.observe(wrp, { childList: true });
+      } catch (e) {}
+    }
+    setTimeout(watchWrp, 800);
+  }, 800);
+})();
+</script><script id="wow-pjax-rehook">
+(function () {
+  if (window.__wowPjaxRehook) return;
+  window.__wowPjaxRehook = true;
+
+  // 插件生成的加类脚本特征：调 classList.add 又写 data-wow-duration 的，就是它
+  function isWowInjector(code) {
+    return !!code && code.indexOf('classList.add') > -1 && code.indexOf('data-wow-duration') > -1;
+  }
+
+  // 把 .js-pjax 里哑火的加类脚本重放一遍（照抄 pjax.pug 的重放手法：换新节点才会执行）
+  function replayInjectors() {
+    var scripts = document.querySelectorAll('.js-pjax script');
+    for (var i = 0; i < scripts.length; i++) {
+      var old = scripts[i];
+      if (old.getAttribute('data-pjax') !== null) continue; // 主题自己会重放，别跑两遍
+      var code = old.text || old.textContent || old.innerHTML || '';
+      if (!isWowInjector(code)) continue;
+      var neu = document.createElement('script');
+      neu.setAttribute('data-wow-pjax-replay', '');
+      neu.appendChild(document.createTextNode(code));
+      old.parentNode.replaceChild(neu, old);
+    }
+  }
+
+  // wow 实例兜底 + 清理被 pjax 换掉的旧节点（否则 wow.boxes 会一直 accumulate）
+  function resyncBoxes() {
+    var wow = window.wow;
+    if (!wow && typeof window.WOW === 'function') {
+      // 等价于 node_modules/hexo-butterfly-wowjs/lib/wow_init.js
+      window.wow = new window.WOW({
+        boxClass: 'wow',
+        animateClass: 'animate__animated',
+        offset: 0,
+        mobile: false,
+        live: true
+      });
+      window.wow.init();
+      return;
+    }
+    if (!wow) return;
+    try {
+      if (wow.boxes && wow.boxes.length) {
+        wow.boxes = wow.boxes.filter(function (el) { return el && document.contains(el); });
+      }
+      // 关键一步：让 wow 自己把新插入的 .wow 卡片登记进 boxes（会顺手隐藏 + 置 scrolled）
+      if (typeof wow.doSync === 'function') {
+        wow.doSync(document.body);
+      } else if (wow.boxes && wow.applyStyle) {
+        // 老版本 wow.js 没有 doSync，手动补：从没被 wow 摸过的块（没有 inline visibility）收进来
+        var nodes = document.querySelectorAll('.wow');
+        for (var i = 0; i < nodes.length; i++) {
+          var el = nodes[i];
+          if (el.style.visibility) continue;
+          if (wow.all && wow.all.indexOf(el) > -1) continue;
+          wow.boxes.push(el);
+          if (wow.all) wow.all.push(el);
+          wow.applyStyle(el, true);
+        }
+        wow.scrolled = true;
+      }
+      // 再补一次 scroll 事件，保证 50ms 轮询这一拍立刻跑
+      window.dispatchEvent(new Event('scroll'));
+    } catch (e) {}
+  }
+
+  function run() {
+    try { replayInjectors(); } catch (e) {}
+    try { resyncBoxes(); } catch (e) {}
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    // 主题的 pjax:complete 监听器（pjax.pug）先重放 script[data-pjax]（轮播/磁贴注入脚本在里面），
+    // 所以这里延后一拍，保证重放顺序在它之后；300ms 那次兜底给异步补内容的场景。
+    setTimeout(run, 0);
+    setTimeout(run, 300);
+  });
+
+  // 调试用：控制台里 window.__wowPjaxRehookNow() 可手动触发一次
+  window.__wowPjaxRehookNow = run;
+})();
+</script> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><a class="magnet_link_more"  href="/categories/" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(33.333333333333336% - 5px);background: #e9e9e9;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: var(--text-bg-hover)}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeIn');
+    arr[i].setAttribute('data-wow-duration', '700ms');
+    arr[i].setAttribute('data-wow-delay', '0');
+    arr[i].setAttribute('data-wow-offset', '0');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeIn');
+    arr[i].setAttribute('data-wow-duration', '700ms');
+    arr[i].setAttribute('data-wow-delay', '0');
+    arr[i].setAttribute('data-wow-offset', '0');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax src="/js/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('gitZone');
+      var item_html = '<container><style>#git_container{min-height: 320px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></container>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('gitZone') && (location.pathname ==='/site/census/'|| '/site/census/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://cdn.jsdelivr.net/gh/yourname/gitcalendar-data@main/data.json",['#d9e0df', '#c6e0dc', '#a8dcd4', '#9adcd2', '#89ded1', '#77e0d0', '#5fdecb', '#47dcc6', '#39dcc3', '#1fdabe', '#00dab9'],'yourname')
+    }
+  </script><!-- hexo injector body_end end --><script id="ai-chat-boot">window.AI_CHAT_CONFIG={"enable":true,"api_base":"https://api.deepseek.com","api_key":"sk-8ff9e5ec701d4eefbae0ccd3b2411a48","api_key_file":".ai-chat-key","proxy_api_base":"/api","proxy_key_stub":"via-proxy","model":"deepseek-chat","temperature":0.7,"max_tokens":8192,"system_prompt":"你是这个博客的页面助手，语气自然、简洁、像朋友聊天。默认用中文回答；\n只依据下面给出的页面内容和对话历史作答，页面里没有的信息不要编造，确实不知道就直说。\n回答用 Markdown 排版，能用列表就用列表，避免长篇大论。\n","welcome":"你好，我是这个页面的 AI 助手。可以帮你总结当前页面、解释名词、回答关于本页的问题。","first_question":"请用中文总结这个页面的内容：先用一句话概括，再列 3-5 条要点。","max_history":12,"max_page_chars":32000,"storage_key":"ai_chat_history_v1","panel_width":460,"panel_height":640,"panel_right":88,"timeout_ms":10000,"has_key":true};</script><script defer src="/js/ai-chat.js?v=mw6dizp3-1dwd"></script></body></html>
