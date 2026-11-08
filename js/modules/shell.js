@@ -390,7 +390,7 @@ function switchNightMode() {
 // OriginTitile 不能只在加载时抓一次：本站是 pjax 换页，换页后 document.title 已经是新页面的标题，
 // 这份「原始标题」不跟着更新的话，切走标签再切回来，两秒后会把标签改回【上一个页面】的标题（偶现）。
 var OriginTitile = document.title;
-var PRANK_TITLES = ['👀跑哪里去了~', '🐖抓到你啦～'];
+var PRANK_TITLES = ['君且去，我自扫庭前叶', '叶已扫尽，可入座了'];
 var titleTime;
 (function keepRealTitle() {
   function note() {
@@ -407,11 +407,11 @@ var titleTime;
 document.addEventListener('visibilitychange', function () {
   if (document.hidden) {
     //离开当前页面时标签显示内容
-    document.title = '👀跑哪里去了~';
+    document.title = '君且去，我自扫庭前叶';
     clearTimeout(titleTime);
   } else {
     //返回当前页面时标签显示内容
-    document.title = '🐖抓到你啦～';
+    document.title = '叶已扫尽，可入座了';
     //两秒后变回正常标题
     titleTime = setTimeout(function () {
       titleTime = null;
