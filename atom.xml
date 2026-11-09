@@ -121,11 +121,11 @@
     <category term="笔记" scheme="https://carryblog.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="开发笔记" scheme="https://carryblog.top/tags/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="MySQL" scheme="https://carryblog.top/tags/MySQL/"/>
     
     <category term="数据库" scheme="https://carryblog.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="开发笔记" scheme="https://carryblog.top/tags/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
