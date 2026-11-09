@@ -1,9 +1,9 @@
 try {
     //51.1a
-    LA.init({ id: "YOUR_51LA_ID", ck: "YOUR_51LA_CK", hashMode: true });
+    LA.init({ id: "3Rm5OMhbbCb7AzQl", ck: "3Rm5OMhbbCb7AzQl", hashMode: true });
     //需要把上述内容换成你的id和ck
 
     //灵雀应用监控
-    new LingQue.Monitor().init({ id: "YOUR_LINGQUE_ID", sendSpaPv: true });
+    new LingQue.Monitor().init({ id: "3Rm5OMhbbCb7AzQl", sendSpaPv: true });
     //这里同样换成你的id
 } catch (err) { }
