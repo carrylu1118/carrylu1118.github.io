@@ -1,7 +1,7 @@
 /* 字体选择器：与 settings.js 的同步 setter 分离；只加载当前选择的字体。 */
 var APPEARANCE_TEXT_FONTS = [
-  ['LXGWScreen', '霞鹜文楷Screen', '屏幕阅读 · 默认', 'reading'],
-  ['LXGW', '霞鹜文楷', '温润文楷 · 长文', 'reading'],
+  //['LXGWScreen', '霞鹜文楷Screen', '屏幕阅读 · 默认', 'reading'],
+  //['LXGW', '霞鹜文楷', '温润文楷 · 长文', 'reading'],
   ['LXGWNeoXiHei', '霞鹜新晰黑', '清晰黑体 · 技术文章', 'reading'],
   ['SourceHanSerif', '思源宋体', '书卷气 · 随笔', 'reading'],
   ['default', '系统默认', '无需下载 · 跟随设备', 'reading'],
@@ -96,10 +96,10 @@ function chooseAppearanceFont(key, kind) {
 }
 function resetAppearanceFonts() {
   cancelAppearanceFonts();
-  setFont('LXGWScreen');
+  setFont('SourceHanSerif');
   setCodeFont('Monaco_1');
   initAppearanceFonts();
-  appearanceFontStatus('text', '已恢复霞鹜文楷Screen，仅重置字体。');
+  appearanceFontStatus('text', '已恢复思源宋体，仅重置字体。');
   appearanceFontStatus('code', '已恢复Monaco，不影响背景、主题色及其他偏好。');
 }
 function appearanceFontOptions(items, kind) {
